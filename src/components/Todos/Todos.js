@@ -22,7 +22,7 @@ const Todos = (props) => {
           title: todo.todo.title,
           date: new Date(todo.todo.date),
           description: todo.todo.description,
-          id: todo.todo.id,
+          id: todo.uuid,
         });
       });
 
@@ -56,7 +56,7 @@ const Todos = (props) => {
           onChangeFilter={filterChangeHandler}
           onChangeOrder={orderChangeHandler}
         />
-        <TodoList items={filteredTodo} loading={props.loading} />
+        <TodoList items={filteredTodo} loading={props.loading} onRemove={props.onRemoveTodo} />
       </Card>
     </div>
   );

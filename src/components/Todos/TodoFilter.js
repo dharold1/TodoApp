@@ -10,15 +10,15 @@ const TodoFilter = (props) => {
   }
 
   return (
-    <div className='py-0 px-4 text-black'>
+    <div className='py-0 px-4 text-black sm:px-0'>
       <div className='flex items-center justify-between mx-0 my-4 w-full'>
         {/* <label className='font-bold mb-2'>Filter</label> <br /> */}
-        <select className='rounded-md py-2 px-12 font-bold sm:' value={props.selected} onChange={dropdownChangeHandler}>
+        <select className='rounded-md py-2 px-12 sm:px-0 font-bold sm:' value={props.selected} onChange={dropdownChangeHandler}>
         <option value=''></option>
           <option value='date'>By date</option>
           <option value='title'>By title</option>
         </select>
-        <select className='rounded-md py-2 px-12 font-bold' value={props.selectedOrder} onChange={orderChangeHandler}>
+        <select className='rounded-md py-2 px-12 sm:px-0 font-bold' value={props.selectedOrder} onChange={orderChangeHandler}>
           <option value='asc'>Ascending</option>
           <option value='desc'>Descending</option>
         </select>

@@ -17,10 +17,12 @@ const TodoList = (props) => {
     <ul className='p-0 list-none '>
       {props.loading ? <h3>Loading Data</h3>: props.items.map((todo) => (
         <TodoItem
+          id={todo.id}
           key={todo.id}
           title={todo.title}
           description={todo.description}
           date={todo.date}
+          onRemove={props.onRemove}
         />
       ))}
     </ul>

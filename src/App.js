@@ -3,7 +3,7 @@ import NewTodo from "./components/NewTodo/NewTodo";
 import Todos from "./components/Todos/Todos";
 import { db } from "./firebase";
 import {uid} from "uid";
-import { set, ref, onValue } from "firebase/database";
+import { set, ref, onValue, remove } from "firebase/database";
 // import { dataref } from "./firebase";
 
 const App = () => {
@@ -25,17 +25,22 @@ const App = () => {
   }, []);
 
   const addTodoHandler = (todo) => {
-    const uuid = uid();    set(ref(db, `/${uuid}`),{
+    const uuid = uid();    
+    set(ref(db, `/${uuid}`),{
       todo,
       uuid
     })
     
   };
-
+  
+  const deleteTodoHandler = (todo) => {
+    remove(ref(db, `/${todo.id}`))
+    
+  };
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} loading={isLoading}  />
+      <Todos items={todos} loading={isLoading} onRemoveTodo={deleteTodoHandler} />
     </div>
   );
 };
